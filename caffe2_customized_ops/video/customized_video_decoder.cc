@@ -82,7 +82,7 @@ void CustomVideoDecoder::decodeLoop(
     memset(probe.get(), 0, probeSz);
     int len = ioctx.read(probe.get(), probeSz - AVPROBE_PADDING_SIZE);
     if (len < probeSz - AVPROBE_PADDING_SIZE) {
-      LOG(ERROR) << "Insufficient data to determine video format";
+      //LOG(ERROR) << "Insufficient data to determine video format";
       return;
     }
 
@@ -98,14 +98,14 @@ void CustomVideoDecoder::decodeLoop(
 
     ret = avformat_open_input(&inputContext, "", nullptr, nullptr);
     if (ret < 0) {
-      LOG(ERROR) << "Unable to open stream " << ffmpegErrorStr(ret);
+      //LOG(ERROR) << "Unable to open stream " << ffmpegErrorStr(ret);
       return;
     }
 
     ret = avformat_find_stream_info(inputContext, nullptr);
     if (ret < 0) {
-      LOG(ERROR) << "Unable to find stream info in " << videoName << " "
-                 << ffmpegErrorStr(ret);
+      //LOG(ERROR) << "Unable to find stream info in " << videoName << " "
+       //          << ffmpegErrorStr(ret);
       return;
     }
 
@@ -123,8 +123,8 @@ void CustomVideoDecoder::decodeLoop(
     }
 
     if (videoStream_ == nullptr) {
-      LOG(ERROR) << "Unable to find video stream in " << videoName << " "
-                 << ffmpegErrorStr(ret);
+      //LOG(ERROR) << "Unable to find video stream in " << videoName << " "
+        //         << ffmpegErrorStr(ret);
       return;
     }
 
