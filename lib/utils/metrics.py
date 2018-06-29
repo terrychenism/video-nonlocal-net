@@ -339,7 +339,7 @@ def get_json_stats_dict(train_meter, test_meter, curr_iter):
         json_stats.update(computed_test_metrics)
 
     # other info
-    json_stats['used_gpu_memory'] = misc.get_gpu_stats()
+    #json_stats['used_gpu_memory'] = misc.get_gpu_stats()
     json_stats['currentIter'] = curr_iter + 1
     json_stats['epoch'] = \
         curr_iter / (cfg.TRAIN.DATASET_SIZE / cfg.TRAIN.BATCH_SIZE)
